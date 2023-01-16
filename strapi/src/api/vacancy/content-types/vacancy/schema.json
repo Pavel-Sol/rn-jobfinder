@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vacancies",
+  "info": {
+    "singularName": "vacancy",
+    "pluralName": "vacancies",
+    "displayName": "vacancy"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "vacancies"
+    },
+    "vacancy_responses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vacancy-response.vacancy-response",
+      "mappedBy": "vacancy"
+    }
+  }
+}

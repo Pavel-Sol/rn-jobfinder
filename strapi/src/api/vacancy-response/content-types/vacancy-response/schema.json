@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vacancy_responses",
+  "info": {
+    "singularName": "vacancy-response",
+    "pluralName": "vacancy-responses",
+    "displayName": "vacancy-response",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "vacancy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::vacancy.vacancy",
+      "inversedBy": "vacancy_responses"
+    },
+    "userId": {
+      "type": "integer"
+    }
+  }
+}
