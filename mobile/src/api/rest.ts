@@ -9,13 +9,13 @@ class RestAPI {
   url: string;
 
   constructor() {
-    this.url = 'https://jsonplaceholder.typicode.com';
+    this.url = 'http://10.0.2.2:1337';
   }
 
   handleSuccess = (response: AxiosResponse): AxiosResponse => response;
 
   handleError = (error: AxiosError): Promise<object> | void => {
-    // console.log("restApi error!!!!!!!! ", error);
+    // console.log('restApi error!!!!!!!! ', JSON.stringify(error));
 
     switch (error?.response?.status) {
       case 401:
@@ -30,8 +30,8 @@ class RestAPI {
 
   private create = (headers?: any): AxiosInstance => {
     const cancel = axios.CancelToken.source();
-    const token = 'token123'; // from LS
-    const headerAuth = token && {Authorization: `Bearer ${token}`};
+    const token = ''; // from LS
+    const headerAuth = token ? {Authorization: `Bearer ${token}`} : {};
 
     const service = axios.create({
       headers: {

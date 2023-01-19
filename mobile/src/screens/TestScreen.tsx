@@ -11,7 +11,12 @@ export const TestScreen = () => {
 
   const handleClick = async () => {
     console.log('click');
-    const response = await RestAPI.get('/users');
+    const response = await RestAPI.post('/posts', {
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    });
+
     console.log('response ', response.data);
   };
 
