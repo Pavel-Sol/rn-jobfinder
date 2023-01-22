@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {BottomNavigator} from './BottomNavigator';
 import {AuthNavigator} from './AuthNavigator';
+import {useAppSelector} from 'src/hooks';
 
 export const AppNavigator = () => {
-  const token = false;
+  const token = useAppSelector(state => state.user.token);
 
   return (
     <NavigationContainer>

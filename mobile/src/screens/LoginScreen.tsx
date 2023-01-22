@@ -1,15 +1,13 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import RestAPI from 'src/api/rest';
+import {useAppDispatch} from 'src/hooks';
+import {login} from 'src/redux/asyncActions/userActions';
 
 export const LoginScreen = () => {
-  const handleClick = async () => {
-    const response = await RestAPI.post('/api/auth/local', {
-      identifier: 'Pavel',
-      password: 'Pavel123',
-    });
+  const dispatch = useAppDispatch();
 
-    console.log('LoginScreen response', response?.data);
+  const handleClick = async () => {
+    dispatch(login({identifier: 'Pavel', password: 'Pavel123'}));
   };
 
   return (

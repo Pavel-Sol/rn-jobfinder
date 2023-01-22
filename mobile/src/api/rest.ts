@@ -4,21 +4,29 @@ import axios, {
   AxiosInstance,
   AxiosRequestHeaders,
 } from 'axios';
+import {logOut} from 'src/redux/reducers/userReducer';
+import store from 'src/redux/store';
 
 class RestAPI {
   url: string;
+  withToken: boolean;
 
-  constructor() {
-    this.url = 'http://10.0.2.2:1337';
+  constructor(withToken: boolean = true, url: string = 'http://10.0.2.2:1337') {
+    this.url = url;
+    this.withToken = withToken;
   }
 
   handleSuccess = (response: AxiosResponse): AxiosResponse => response;
 
   handleError = (error: AxiosError): Promise<object> | void => {
     // console.log('restApi error!!!!!!!! ', JSON.stringify(error));
+    // console.log('restApi error status!!!!!!!! ', error?.response?.status);
 
     switch (error?.response?.status) {
       case 401:
+        return Promise.reject(new Error('ошибка авторизации'));
+      case 403:
+        store.dispatch(logOut());
         return Promise.reject(new Error('ошибка авторизации'));
       case 502:
         return Promise.reject(new Error('Сервер не доступен'));
@@ -30,8 +38,9 @@ class RestAPI {
 
   private create = (headers?: any): AxiosInstance => {
     const cancel = axios.CancelToken.source();
-    const token = ''; // from LS
-    const headerAuth = token ? {Authorization: `Bearer ${token}`} : {};
+    const token = store.getState().user.token;
+    const headerAuth =
+      token && this.withToken ? {Authorization: `Bearer ${token}`} : {};
 
     const service = axios.create({
       headers: {
@@ -105,4 +114,4 @@ class RestAPI {
   };
 }
 
-export default new RestAPI();
+export default RestAPI;

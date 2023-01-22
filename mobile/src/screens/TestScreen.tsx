@@ -1,23 +1,22 @@
 import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import RestAPI from 'src/api/rest';
+import {UserAPI} from 'src/api/userApi';
 import {increaseCount} from 'src/redux/reducers/countReducer';
+import {logOut} from 'src/redux/reducers/userReducer';
 import {RootState} from 'src/redux/store';
 
 export const TestScreen = () => {
   const count = useSelector((state: RootState) => state.count.count);
   const dispatch = useDispatch();
 
-  const handleClick = async () => {
-    console.log('click');
-    const response = await RestAPI.post('/posts', {
-      title: 'foo',
-      body: 'bar',
-      userId: 1,
-    });
+  const handleClick = () => {
+    dispatch(logOut());
+  };
 
-    console.log('response ', response.data);
+  const handleGetMyINFO = async () => {
+    const res = await UserAPI.getMyInfo();
+    console.log('handleGetMyINFO,', res?.data);
   };
 
   const handleInc = () => {
@@ -28,7 +27,11 @@ export const TestScreen = () => {
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>TestScreen</Text>
       <TouchableOpacity style={s.btn} onPress={handleClick}>
-        <Text>send REQUEST!!!</Text>
+        <Text>LOGOUT</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={s.btn} onPress={handleGetMyINFO}>
+        <Text>Get MY INFOOOO!!!</Text>
       </TouchableOpacity>
 
       <View style={s.count}>
