@@ -2,7 +2,7 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeScreen} from 'src/screens/HomeScreen';
-import {SettingsScreen} from 'src/screens/SettingsScreen';
+import {SettingsScreen} from 'src/screens/SettingsScreen/SettingsScreen';
 import {TestScreen} from 'src/screens/TestScreen';
 
 const Tab = createBottomTabNavigator();

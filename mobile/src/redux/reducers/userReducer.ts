@@ -1,5 +1,5 @@
-import {Slices} from './../../constant/reducers';
 import {createSlice} from '@reduxjs/toolkit';
+import {Slices} from 'src/constants/reducers';
 import {login} from '../asyncActions/userActions';
 
 type initialStateT = {
