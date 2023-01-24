@@ -4,15 +4,13 @@ import {getColor} from 'src/utils/getColor';
 export const s = (theme: string) =>
   StyleSheet.create({
     container: {
-      backgroundColor: getColor(theme).PRIMARY_BG_COLOR,
       flex: 1,
-    },
-
-    button: {
-      backgroundColor: getColor(theme).PRIMARY_BUTTON_COLOR,
+      justifyContent: 'center',
       padding: 15,
+      backgroundColor: getColor(theme).PRIMARY_BG_COLOR,
     },
-    title: {
-      color: getColor(theme).PRIMARY_TEXT_COLOR,
+    btn: {
+      backgroundColor: 'blue',
+      padding: 10,
     },
   });

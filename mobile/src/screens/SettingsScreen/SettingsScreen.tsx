@@ -1,7 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {View, Text, TouchableOpacity} from 'react-native';
-import {FormikText} from 'src/components/form/fields/FormikText';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import {FormikText} from 'src/components/form/fields/FormikText/FormikText';
 import {Formik} from 'formik';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {setTheme} from 'src/redux/reducers/appReducer';
@@ -30,8 +30,8 @@ export const SettingsScreen = () => {
     <View style={s(theme).container}>
       <View>
         <Ionicons name="md-location" size={34} color={'blue'} />
+        <Text style={s(theme).title}>Settingsddd!</Text>
       </View>
-      <Text style={s(theme).title}>Settingsddd!</Text>
 
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({handleSubmit}) => (
