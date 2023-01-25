@@ -1,14 +1,16 @@
 import {Formik} from 'formik';
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {Button} from 'src/components/buttons/Button/Button';
 import {FormikText} from 'src/components/form/fields';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {login} from 'src/redux/asyncActions/userActions';
-import {s} from './style';
+import {makeStyle} from './style';
 
 export const LoginScreen = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(state => state.app.theme);
+  const s = makeStyle(theme);
 
   const initialValues = {
     identifier: 'Pavel',
@@ -20,19 +22,17 @@ export const LoginScreen = () => {
   };
 
   return (
-    <View style={s(theme).container}>
-      <Text>LoginScreen</Text>
-
+    <View style={s.container}>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({handleSubmit}) => (
-          <View style={s(theme).container}>
-            <FormikText name="identifier" placeholder="email" />
+          <View style={s.container}>
+            <FormikText name="identifier" placeholder="email" style={s.input} />
 
             <FormikText name="password" placeholder="password" />
 
-            <TouchableOpacity style={s(theme).btn} onPress={handleSubmit}>
-              <Text>send LOGIN</Text>
-            </TouchableOpacity>
+            <Button style={s.btn} fullWidth onPress={handleSubmit}>
+              send LOGIN
+            </Button>
           </View>
         )}
       </Formik>

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {getColor} from 'src/utils/getColor';
 
-export const s = (theme: string) =>
+export const makeStyle = (theme: string) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -10,7 +10,10 @@ export const s = (theme: string) =>
       backgroundColor: getColor(theme).PRIMARY_BG_COLOR,
     },
     btn: {
-      backgroundColor: 'blue',
-      padding: 10,
+      marginTop: 15,
+      height: 40,
+    },
+    input: {
+      marginBottom: 7,
     },
   });
