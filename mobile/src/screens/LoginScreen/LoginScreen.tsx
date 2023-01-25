@@ -1,8 +1,8 @@
 import {Formik} from 'formik';
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {Button} from 'src/components/buttons/Button/Button';
-import {FormikText} from 'src/components/form/fields';
+import {Button} from 'src/baseComponents/buttons/Button/Button';
+import {FormikText} from 'src/baseComponents/form/fields';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {login} from 'src/redux/asyncActions/userActions';
 import {makeStyle} from './style';

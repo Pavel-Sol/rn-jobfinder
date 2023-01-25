@@ -1,7 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
-import {FormikText} from 'src/components/form/fields/FormikText/FormikText';
+import {FormikText} from 'src/baseComponents/form/fields/FormikText/FormikText';
 import {Formik} from 'formik';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {setTheme} from 'src/redux/reducers/appReducer';
