@@ -13,6 +13,15 @@ export const BottomNavigator = () => {
     <>
       <Tab.Navigator>
         <Tab.Screen
+          name="Поиск"
+          component={CatalogScreen}
+          options={({route}) => ({
+            tabBarIcon: ({color, size}) => (
+              <AntDesign name="search1" size={34} color={'blue'} />
+            ),
+          })}
+        />
+        <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={({route}) => ({
