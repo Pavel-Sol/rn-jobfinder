@@ -1,7 +1,7 @@
-import {UserAPI} from './userApi';
+import {AuthAPI} from './authApi';
 import {VacancyAPI} from './vacancyApi';
 
 export const SERVICE_API = {
-  UserAPI,
+  AuthAPI,
   VacancyAPI,
 };

@@ -1,14 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {Slices} from 'src/constants/reducers';
 import {IVacancy} from 'src/models/vacancy';
-import {getVacancies} from '../asyncActions/vacancyActions';
+import {fetchVacancies} from '../asyncActions/vacancyActions';
 
 type initialStateT = {
   vacancies: IVacancy[];
+  total: number;
 };
 
 const initialState: initialStateT = {
   vacancies: [],
+  total: 0,
 };
 
 export const vacancySlice = createSlice({
@@ -16,10 +18,9 @@ export const vacancySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(getVacancies.fulfilled, (state, action) => {
-      if (action.payload?.data) {
-        state.vacancies = action.payload?.data;
-      }
+    builder.addCase(fetchVacancies.fulfilled, (state, action) => {
+      state.vacancies = action.payload?.data;
+      state.total = action.payload?.meta?.pagination?.total;
     });
   },
 });

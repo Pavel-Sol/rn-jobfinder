@@ -62,6 +62,10 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "single": {
+      "type": "boolean",
+      "required": false
     }
   }
 }

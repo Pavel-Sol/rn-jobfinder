@@ -6,7 +6,7 @@ import {AuthNavigator} from './AuthNavigator';
 import {useAppSelector} from 'src/hooks';
 
 export const AppNavigator = () => {
-  const token = useAppSelector(state => state.user.token);
+  const token = useAppSelector(state => state.auth.token);
 
   return (
     <NavigationContainer>

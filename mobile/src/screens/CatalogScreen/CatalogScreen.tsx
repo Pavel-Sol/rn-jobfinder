@@ -1,8 +1,7 @@
-import axios from 'axios';
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
-import {getVacancies} from 'src/redux/asyncActions/vacancyActions';
+import {fetchVacancies} from 'src/redux/asyncActions/vacancyActions';
 import {makeStyle} from './style';
 
 export const CatalogScreen = () => {
@@ -11,10 +10,10 @@ export const CatalogScreen = () => {
   const vacancies = useAppSelector(state => state.vacancy.vacancies);
   const s = makeStyle(theme);
 
-  console.log('CatalogScreen', vacancies);
+  // console.log('CatalogScreen', vacancies);
 
   useEffect(() => {
-    dispatch(getVacancies(''));
+    dispatch(fetchVacancies(''));
   }, [dispatch]);
 
   return (

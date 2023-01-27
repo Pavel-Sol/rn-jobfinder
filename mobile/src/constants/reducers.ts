@@ -1,5 +1,5 @@
 export const Slices = {
-  user: 'user',
+  auth: 'auth',
   app: 'app',
   vacancy: 'vacancy',
 };

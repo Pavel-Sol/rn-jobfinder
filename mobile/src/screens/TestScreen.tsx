@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {UserAPI} from 'src/api/userApi';
+import {AuthAPI} from 'src/api/authApi';
 import {increaseCount} from 'src/redux/reducers/countReducer';
-import {logOut} from 'src/redux/reducers/userReducer';
+import {logOut} from 'src/redux/reducers/authReducer';
 import {RootState} from 'src/redux/store';
 
 export const TestScreen = () => {
@@ -15,8 +15,8 @@ export const TestScreen = () => {
   };
 
   const handleGetMyINFO = async () => {
-    const res = await UserAPI.getMyInfo();
-    console.log('handleGetMyINFO,', res?.data);
+    // const res = await UserAPI.getMyInfo();
+    // console.log('handleGetMyINFO,', res?.data);
   };
 
   const handleInc = () => {

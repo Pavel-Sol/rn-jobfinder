@@ -4,7 +4,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {Button} from 'src/baseComponents/buttons/Button/Button';
 import {FormikText} from 'src/baseComponents/form/fields';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
-import {login} from 'src/redux/asyncActions/userActions';
+import {login} from 'src/redux/asyncActions/authActions';
 import {makeStyle} from './style';
 
 export const LoginScreen = () => {

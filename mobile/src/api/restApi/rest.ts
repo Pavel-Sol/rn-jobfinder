@@ -4,7 +4,7 @@ import axios, {
   AxiosInstance,
   AxiosRequestHeaders,
 } from 'axios';
-import {logOut} from 'src/redux/reducers/userReducer';
+import {logOut} from 'src/redux/reducers/authReducer';
 import store from 'src/redux/store';
 
 class RestAPI {
@@ -37,7 +37,7 @@ class RestAPI {
 
   private create = (headers?: any): AxiosInstance => {
     const cancel = axios.CancelToken.source();
-    const token = store.getState().user.token;
+    const token = store.getState().auth.token;
     const headerAuth =
       token && this.withToken ? {Authorization: `Bearer ${token}`} : {};
 

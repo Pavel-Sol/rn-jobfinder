@@ -1,33 +1,29 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {Slices} from 'src/constants/reducers';
-import {login} from '../asyncActions/userActions';
+import {login} from '../asyncActions/authActions';
 
 type initialStateT = {
   token: string;
-  username: string;
 };
 
 const initialState: initialStateT = {
   token: '',
-  username: '',
 };
 
-export const userSlice = createSlice({
-  name: Slices.user,
+export const authSlice = createSlice({
+  name: Slices.auth,
   initialState,
   reducers: {
     logOut(state) {
       state.token = '';
-      state.username = '';
     },
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action) => {
-      state.username = action.payload?.user?.username;
       state.token = action.payload?.jwt;
     });
   },
 });
 
-export const {logOut} = userSlice.actions;
-export default userSlice.reducer;
+export const {logOut} = authSlice.actions;
+export default authSlice.reducer;
