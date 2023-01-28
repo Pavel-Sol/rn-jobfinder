@@ -4,21 +4,23 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {HomeScreen} from 'src/screens/HomeScreen';
 import {SettingsScreen} from 'src/screens/SettingsScreen/SettingsScreen';
 import {TestScreen} from 'src/screens/TestScreen';
 import {CatalogScreen} from 'src/screens/CatalogScreen';
 import {ProfileNavigator} from './ProfiveNavigator';
-import {useAppSelector} from 'src/hooks';
+import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {getColor} from 'src/utils/getColor';
+import {fetchUserInfo} from 'src/redux/asyncActions/userActions';
 
 const Tab = createBottomTabNavigator();
 
 export const BottomNavigator = () => {
+  const dispatch = useAppDispatch();
   const theme = useAppSelector(state => state.app.theme);
-  // useEffect(() => {
-  //   console.log('BottomNavigator');
-  // }, []);
+
+  useEffect(() => {
+    dispatch(fetchUserInfo());
+  }, [dispatch]);
 
   return (
     <>
