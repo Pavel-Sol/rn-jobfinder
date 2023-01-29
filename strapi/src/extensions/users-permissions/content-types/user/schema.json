@@ -66,6 +66,12 @@
     "single": {
       "type": "boolean",
       "required": false
+    },
+    "resume": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resume.resume",
+      "mappedBy": "user"
     }
   }
 }
