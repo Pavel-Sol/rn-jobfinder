@@ -3,4 +3,5 @@ export const Slices = {
   app: 'app',
   vacancy: 'vacancy',
   user: 'user',
+  resume: 'resume',
 };

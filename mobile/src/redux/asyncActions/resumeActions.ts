@@ -1,12 +1,12 @@
 import {SERVICE_API} from 'src/api';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
-export const fetchUserInfo = createAsyncThunk(
-  'user/fetchUserInfo',
+export const fetchMyResumes = createAsyncThunk(
+  'resume/fetchMyResumes',
   async (_, thunkAPI) => {
     try {
-      const response = await SERVICE_API.UserAPI.getMyInfo();
-      // console.log('user/fetchUserInfo', response.data);
+      const response = await SERVICE_API.ResumeAPI.getMyResumes();
+      // console.log('resume/fetchMyResumes', response.data);
 
       if (!response.data) {
         throw new Error();
@@ -14,7 +14,7 @@ export const fetchUserInfo = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.log('user/fetchUserInfo error', error);
+      console.log('fetchMyResumes error', error);
       return thunkAPI.rejectWithValue('error');
     }
   },

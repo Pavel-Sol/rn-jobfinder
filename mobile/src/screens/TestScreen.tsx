@@ -1,20 +1,24 @@
 import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {AuthAPI} from 'src/api/authApi';
+import {useAppSelector} from 'src/hooks';
 import {logOut} from 'src/redux/reducers/authReducer';
 import {RootState} from 'src/redux/store';
 
 export const TestScreen = () => {
   const dispatch = useDispatch();
+  const resumes = useAppSelector(state => state.resume.resumes);
+  const activeResume = resumes.find(
+    resume => resume.attributes.isActive === true,
+  );
+
+  if (activeResume) {
+    console.log('activeResume ', activeResume.attributes.title);
+  }
 
   const handleClick = () => {
     dispatch(logOut());
-  };
-
-  const handleGetMyINFO = async () => {
-    // const res = await UserAPI.getMyInfo();
-    // console.log('handleGetMyINFO,', res?.data);
   };
 
   return (
@@ -22,10 +26,6 @@ export const TestScreen = () => {
       <Text>TestScreen</Text>
       <TouchableOpacity style={s.btn} onPress={handleClick}>
         <Text>LOGOUT</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={s.btn} onPress={handleGetMyINFO}>
-        <Text>Get MY INFOOOO!!!</Text>
       </TouchableOpacity>
     </View>
   );

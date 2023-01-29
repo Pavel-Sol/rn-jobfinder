@@ -11,6 +11,7 @@ import {ProfileNavigator} from './ProfiveNavigator';
 import {useAppSelector, useAppDispatch} from 'src/hooks';
 import {getColor} from 'src/utils/getColor';
 import {fetchUserInfo} from 'src/redux/asyncActions/userActions';
+import {fetchMyResumes} from 'src/redux/asyncActions/resumeActions';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +21,10 @@ export const BottomNavigator = () => {
 
   useEffect(() => {
     dispatch(fetchUserInfo());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchMyResumes());
   }, [dispatch]);
 
   return (
